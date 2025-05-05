@@ -10,15 +10,11 @@ class TesteContaBancaria:
         self.conta1.depositar(150)
         self.conta1.sacar(90)
         self.conta1.transferir(100, self.conta2)
-        # self.conta1.exibir_historico()
-        # self.conta1.exibir_saldo()
 
         print("\n>>> Informações iniciais de Ian:")
         self.conta2.depositar(900)
         self.conta2.sacar(570)
         self.conta2.transferir(140, self.conta1)
-        # self.conta2.exibir_historico()
-        # self.conta2.exibir_saldo()
 
         print("\n>>> Histórico do Orlando:")    
         self.conta1.exibir_historico()
