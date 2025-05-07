@@ -45,11 +45,11 @@ class contaBancaria:
         if valor <= self.saldo:
             self.saldo -= valor
             self.historico.append({"operacao": 0, 
-                            "remetente": self.titular,
-                            "destinatario": "",
-                            "valor": valor,
-                            "saldo": self.saldo,
-                            "tempo": int(time.time())})
+                        "remetente": self.titular,
+                        "destinatario": "",
+                        "valor": valor,
+                        "saldo": self.saldo,
+                        "tempo": int(time.time())})
             print("Saque realizado com sucesso!")
         else:   # sem plata na conta
             a = input("Deseja utilizar o limite? (R${self.limite}) [s para sim] ")
