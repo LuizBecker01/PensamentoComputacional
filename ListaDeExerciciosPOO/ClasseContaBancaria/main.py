@@ -3,8 +3,10 @@ import os
 
 os.system('cls' if os.name=='nt' else 'clear') 
 
-conta = contaBancaria("Orlando", 1000, 500, [])
+orlando = contaBancaria("Orlando", 1000, 500, []) # conta1
+orlando.depositar(50)
+henrique = contaBancaria("Henrique", 1000, 500, []) # conta2
 
-conta.depositar(150)
-conta.sacar(100)
-conta.exibir_historico()
+henrique.transferir(50, orlando)
+henrique.exibir_historico()
+orlando.exibir_historico()
