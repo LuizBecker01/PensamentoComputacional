@@ -15,6 +15,13 @@ class contaBancaria:
         self.limite = limite
         self.historico = historico
 
+    # def criar_conta(self, titular):
+    #     '''
+    #     Objetivo: Metodo que realiza a criação de conta do usuário
+    #     Entrada: titular(str)
+    #     Return: True, se a conta for criada com sucesso. False, caso contrário a conta não foi criada.
+    #     '''
+
     def depositar(self, valor, remetente = None):
         '''
         Obejtivo: Metodo que realiza o depósito na conta.

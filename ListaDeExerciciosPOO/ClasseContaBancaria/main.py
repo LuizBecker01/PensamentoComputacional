@@ -11,6 +11,7 @@ menu += "\n5 - Realizar transferência;"
 menu += "\n6 - Exibir histórico de transações;"
 menu += "\n7 - Excluir conta."
 menu += "\n"
+menu += "\nDigite aqui:"
 
 os.system('cls' if os.name=='nt' else 'clear') 
 
@@ -28,8 +29,6 @@ while True:
     titular = input("Digite o titular da conta que deseja ver o saldo:")
     for conta in Banco:
         if conta.titular == titular:
-            print(f"O {titular} tem R$ {conta.saldo} em sua conta.")
-        # else:
-        #     if conta.tituar != titular:
-        #         print(f"O titular não foi encntrado.")
+            print(f"{titular} tem R$ {conta.saldo} em sua conta.")
+            
     break  
