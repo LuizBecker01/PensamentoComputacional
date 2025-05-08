@@ -4,8 +4,6 @@ class contaBancaria:
     '''
     Classe que implementa métodos para manipular uma conta bancária.add()
     Atributos: titular (str), saldo(float), limite (float) e histórico (lista de dicionários)
-    
-    OBS: Operações no hitórico: 0 - sacar, 1 - depositar, 2 - transferir
     '''
         
     def __init__(self, titular, saldo, limite, historico):
