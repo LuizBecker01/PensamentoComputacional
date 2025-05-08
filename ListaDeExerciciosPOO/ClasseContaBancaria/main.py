@@ -26,6 +26,8 @@ while True:
     Banco.append(contaBancaria("Marco", 5000, 500, []))
     Banco.append(contaBancaria("Pedro", 2000, 700, []))
 
+    conta = input("Você deja criar uma conta [S/N]?")
+
     titular = input("Digite o titular da conta que deseja ver o saldo:")
     for conta in Banco:
         if conta.titular == titular:
