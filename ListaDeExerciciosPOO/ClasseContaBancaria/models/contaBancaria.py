@@ -41,7 +41,7 @@ class contaBancaria:
         '''
         Objetivo: Metodo que realiza uma transação.
         Entrada: valor (float) e obj contaBancaria
-        Return: Se o ok -> True, Se o NOK -> False.
+        Return: Se ok -> True, se não ok -> False.
         '''
         if self.saldo >= valor:
             self.saldo -= valor

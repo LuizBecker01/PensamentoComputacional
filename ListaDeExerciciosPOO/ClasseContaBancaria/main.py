@@ -39,6 +39,7 @@ while True:
                 break
         else:
             print("Conta não encontrada.")
+            
 
     elif funcao == "3":
         titular = input("Titular da conta: ")
