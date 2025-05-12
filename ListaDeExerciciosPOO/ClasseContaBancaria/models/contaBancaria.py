@@ -1,11 +1,10 @@
 import time
-  
+
 class contaBancaria:
     '''
     Classe que implementa métodos para manipular uma conta bancária.add()
     Atributos: titular (str), saldo(float), limite (float) e histórico (lista de dicionários)
     '''
-        
     def __init__(self, titular, saldo, limite, historico):
         '''
         Consultador da classe ContaBancaria
@@ -15,109 +14,56 @@ class contaBancaria:
         self.limite = limite
         self.historico = historico
 
-    # def criar_conta(self, titular):
-    #     '''
-    #     Objetivo: Metodo que realiza a criação de conta do usuário
-    #     Entrada: titular(str)
-    #     Return: True, se a conta for criada com sucesso. False, caso contrário a conta não foi criada.
-    #     '''
-
-    def depositar(self, valor, remetente = None):
-        '''
-        Obejtivo: Metodo que realiza o depósito na conta.
-        Entrada: valor (float) e remetente (str).
-        Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
-        '''
-        op = 1
-        # detecta se é uma transferencia
-        if remetente != None:
-            op = 2
-        if valor > 0:
-            self.saldo += valor
-        else:
-            print("Valor inválido")
-            return False
-
-    def sacar(self, valor, destinatario = None): 
+    def sacar(self, valor):
         '''
         Obejtivo: Metodo que realiza o saque na conta.
-        Entrada: valor (float) e destinatario (str).
+        Entrada: valor (float).
         Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
         '''
-        op = 0
-        #detecta se é uma transferencia e muda para op 2
-        if destinatario != None:
-            op = 2
-        if valor <= self.saldo:
+        if self.saldo >= valor:
             self.saldo -= valor
-        else:   # sem plata na conta
-            a = input("Deseja utilizar o limite? (R${self.limite}) [s para sim] ")
-            if a == "s":
-                if (self.saldo + self.limite) >= valor:
-                    self.saldo -= valor
-                    print("Saque realizado com sucesso!")
-                else:
-                    print("Saldo e limite insuficientes!")
-            else:
-                print("Operação com limite cancelada!")
-        return False
-    
-    def transferir(self, valor, destinatario):
+            self.adiciona_historico("Saque", valor, time.time(), self.saldo)
+            print(f"Saque de R${valor:.2f} realizado com sucesso!")
+        else:
+            print("Saldo insuficiente.")
+
+    def depositar(self, valor):
+        '''
+        Obejtivo: Metodo que realiza o depósito na conta.
+        Entrada: valor (float).
+        Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
+        '''
+        self.saldo += valor
+        self.adiciona_historico("Depósito", valor, time.time(), self.saldo)
+        print(f"Depósito de R${valor:.2f} realizado com sucesso!")
+
+    def transferir(self, valor, destino):
         '''
         Objetivo: Metodo que realiza uma transação.
         Entrada: valor (float) e obj contaBancaria
         Return: Se o ok -> True, Se o NOK -> False.
         '''
-        # Se o saque ocorrer com sucesso
-        if self.sacar(valor, destinatario.titular):
-            # deposita na conta do destinatario
-            destinatario.depositar(valor, self.titular)
-        
-    def exibir_historico(self):
-        print("Histórico de Transações:")
-        for transacao in self.historico:
-            dt = time.localtime(transacao["tempo"])
-            print("Operação:", transacao["operacao"], 
-                  "- Remetente:", transacao["remetente"], 
-                  "- Destinatario:", transacao["destinatario"], 
-                  "- Valor:", transacao["valor"], 
-                  "- Saldo:", transacao["saldo"], 
-                  "- Data e Hora:",  
-                  f"{dt.tm_hour}:{dt.tm_min}:{dt.tm_sec} {dt.tm_mday}/{dt.tm_wday}/{dt.tm_year}")
-       
-    # def exibir_saldo(self): 
-    
-    def adiciona_historico(self, tipo_transferencia, valor, tempo, saldo, destinatario = None):
-        
-        if tipo_transferencia == "Saque":
-            if destinatario == None:
-                self.historico.append({"tipo": f"{tipo_transferencia}",
-                                        "remetente": self.titular,
-                                        "destinatario": destinatario,
-                                        "valor": valor,
-                                        "tempo": tempo,
-                                        "saldo": saldo})
-            else:
-                self.historico.append({"tipo": f"Transferência - {tipo_transferencia}",
-                                        "remetente": self.titular,
-                                        "destinatario": destinatario.titular,
-                                        "valor": valor,
-                                        "tempo": tempo,
-                                        "saldo": saldo})
-        elif tipo_transferencia == "Deposito":
-            if destinatario == None:
-                self.historico.append({"tipo": f"{tipo_transferencia}",
-                                        "remetente": destinatario,
-                                        "destinatario": self.titular,
-                                        "valor": valor,
-                                        "tempo": tempo,
-                                        "saldo": saldo})
-            else:
-                self.historico.append({"tipo": f"Transferência - {tipo_transferencia}",
-                                        "remetente": destinatario.titular,
-                                        "destinatario": self.titular,
-                                        "valor": valor,
-                                        "tempo": tempo,
-                                        "saldo": saldo})
+        if self.saldo >= valor:
+            self.saldo -= valor
+            destino.saldo += valor
+            self.adiciona_historico("Transferência Enviada", valor, time.time(), self.saldo, destino.titular)
+            destino.adiciona_historico("Transferência Recebida", valor, time.time(), destino.saldo, self.titular)
+            print(f"Transferência de R${valor:.2f} para {destino.titular} realizada com sucesso!")
         else:
-            print(f"Transação {tipo_transferencia} invalida")
+            print("Saldo insuficiente para transferir.")
+
+    def adiciona_historico(self, tipo, valor, timestamp, saldo_pos, conta_destino=None):
+        data_hora = time.strftime('%d/%m/%Y %H:%M:%S', time.localtime(timestamp))
+        if conta_destino:
+            descricao = f"{tipo} de R${valor:.2f} {'para' if 'Enviada' in tipo else 'de'} {conta_destino}"
+        else:
+            descricao = f"{tipo} de R${valor:.2f}"
+        self.historico.append(f"{data_hora} - {descricao} | Saldo após operação: R${saldo_pos:.2f}")
+
+    def exibir_historico(self):
+        print(f"\nHistórico de {self.titular}:")
+        if self.historico:
+            for linha in self.historico:
+                print(linha)
+        else:
+            print("Nenhuma transação realizada.")
