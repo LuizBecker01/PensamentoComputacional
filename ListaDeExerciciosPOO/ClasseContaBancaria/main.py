@@ -44,36 +44,45 @@ while True:
 
     elif funcao == "3":
         titular = input("Titular da conta: ")
-        valor = float(input("Valor do saque: "))
-        for conta in Banco:
-            if conta.titular == titular:
-                conta.sacar(valor)
-                break
-        else:
-            print("Conta não encontrada.")
+        try:
+            valor = float(input("Valor do saque: "))
+            for conta in Banco:
+                if conta.titular == titular:
+                    conta.sacar(valor)
+                    break
+            else:
+                print("Conta não encontrada.")
+        except ValueError:
+            print("Valor inválido. Por favor, digite um número valido para  realizar o saque.")
 
     elif funcao == "4":
         titular = input("Titular da conta: ")
-        valor = float(input("Valor do depósito: "))
-        for conta in Banco:
-            if conta.titular == titular:
-                conta.depositar(valor)
-                break
-        else:
-            print("Conta não encontrada.")
-
+        try:
+            valor = float(input("Valor do depósito: "))
+            for conta in Banco:
+                if conta.titular == titular:
+                    conta.depositar(valor)
+                    break
+            else:
+                print("Conta não encontrada.")
+        except ValueError:
+            print("Valor inválido. Por favor, digite um número válido para realizar o depósito.")
+    
     elif funcao == "5":
         remetente_nome = input("Titular da conta que enviará: ")
         destinatario_nome = input("Titular da conta que receberá: ")
-        valor = float(input("Valor da transferência: "))
+        try:
+            valor = float(input("Valor da transferência: "))
 
-        remetente = next((c for c in Banco if c.titular == remetente_nome), None)
-        destinatario = next((c for c in Banco if c.titular == destinatario_nome), None)
+            remetente = next((c for c in Banco if c.titular == remetente_nome), None)
+            destinatario = next((c for c in Banco if c.titular == destinatario_nome), None)
 
-        if remetente and destinatario:
-            remetente.transferir(valor, destinatario)
-        else:
-            print("Conta(s) não encontrada(s).")
+            if remetente and destinatario:
+                remetente.transferir(valor, destinatario)
+            else:
+                print("Conta(s) não encontrada(s).")
+        except ValueError:
+            print("Valor inválido. Por favor, digite um número valido para realizar a transferência.")
 
     elif funcao == "6":
         titular = input("Titular da conta: ")
@@ -100,14 +109,17 @@ while True:
     elif funcao == "8":
         remetente_nome = input("Titular da conta que enviará: ")
         chave_destino = input("Chave Pix do destinatário: ")
-        valor = float(input("Valor da transferência: "))
+        try:
+            valor = float(input("Valor da transferência: "))
 
-        remetente = next((c for c in Banco if c.titular == remetente_nome), None)
+            remetente = next((c for c in Banco if c.titular == remetente_nome), None)
 
-        if remetente:
-            remetente.pix(chave_destino, valor, Banco)
-        else:
-            print("Conta não encontrada.")
+            if remetente:
+                remetente.pix(chave_destino, valor, Banco)
+            else:
+                print("Conta não encontrada.")
+        except ValueError:
+            print("Valor inválido. Por favor, digite um número valido para realizar o pix.")
 
     else:
         print("Opção inválida.")
