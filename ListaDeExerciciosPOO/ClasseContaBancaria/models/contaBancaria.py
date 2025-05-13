@@ -3,26 +3,28 @@ import time
 class contaBancaria:
     '''
     Classe que implementa métodos para manipular uma conta bancária.add()
-    Atributos: titular (str), saldo(float), limite (float) e histórico (lista de dicionários)
+    Atributos: titular (str), saldo(float), limite (float) e histórico (list)
     '''
-    def __init__(self, titular, saldo, limite, historico):
+    def __init__(self, titular: str, saldo: float, limite: float, historico: list) -> bool:
         '''
         Consultador da classe ContaBancaria
         '''
-        self.titular = titular
-        self.saldo = saldo
-        self.limite = limite
-        self.historico = historico
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
+        self.__historico = historico
 
+        return True
+    
     def sacar(self, valor):
         '''
         Obejtivo: Metodo que realiza o saque na conta.
         Entrada: valor (float).
         Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
         '''
-        if self.saldo >= valor:
-            self.saldo -= valor
-            self.adiciona_historico("Saque", valor, time.time(), self.saldo)
+        if self.__saldo >= valor:
+            self.__saldo -= valor
+            self.adiciona_historico("Saque", valor, time.time(), self.__saldo)
             print(f"Saque de R${valor:.2f} realizado com sucesso!")
         else:
             print("Saldo insuficiente.")
@@ -33,8 +35,8 @@ class contaBancaria:
         Entrada: valor (float).
         Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
         '''
-        self.saldo += valor
-        self.adiciona_historico("Depósito", valor, time.time(), self.saldo)
+        self.__saldo += valor
+        self.adiciona_historico("Depósito", valor, time.time(), self.__saldo)
         print(f"Depósito de R${valor:.2f} realizado com sucesso!")
 
     def transferir(self, valor, destino):
@@ -43,12 +45,12 @@ class contaBancaria:
         Entrada: valor (float) e obj contaBancaria
         Return: Se ok -> True, se não ok -> False.
         '''
-        if self.saldo >= valor:
-            self.saldo -= valor
-            destino.saldo += valor
-            self.adiciona_historico("Transferência Enviada", valor, time.time(), self.saldo, destino.titular)
-            destino.adiciona_historico("Transferência Recebida", valor, time.time(), destino.saldo, self.titular)
-            print(f"Transferência de R${valor:.2f} para {destino.titular} realizada com sucesso!")
+        if self.__saldo >= valor:
+            self.__saldo -= valor
+            destino.__saldo += valor
+            self.adiciona_historico("Transferência Enviada", valor, time.time(), self.saldo, destino.__titular)
+            destino.adiciona_historico("Transferência Recebida", valor, time.time(), destino.__saldo, self.__titular)
+            print(f"Transferência de R${valor:.2f} para {destino.__titular} realizada com sucesso!")
         else:
             print("Saldo insuficiente para transferir.")
 
@@ -58,12 +60,13 @@ class contaBancaria:
             descricao = f"{tipo} de R${valor:.2f} {'para' if 'Enviada' in tipo else 'de'} {conta_destino}"
         else:
             descricao = f"{tipo} de R${valor:.2f}"
-        self.historico.append(f"{data_hora} - {descricao} | Saldo após operação: R${saldo_pos:.2f}")
+        self.__historico.append(f"{data_hora} - {descricao} | Saldo após operação: R${saldo_pos:.2f}")
 
     def exibir_historico(self):
         print(f"\nHistórico de {self.titular}:")
-        if self.historico:
-            for linha in self.historico:
+        if self.__historico:
+            for linha in self.__historico:
                 print(linha)
         else:
             print("Nenhuma transação realizada.")
+
