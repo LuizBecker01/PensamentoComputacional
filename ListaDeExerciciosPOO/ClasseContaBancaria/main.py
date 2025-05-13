@@ -16,13 +16,9 @@ Digite a opção desejada: """
 
 # Banco
 Banco = [
-<<<<<<< HEAD
     ContaBancaria("João", 3300, 500, [], "51907070707"),
     ContaBancaria("Marco", 5000, 500, [], "marco@gmail.com"),
     ContaBancaria("Luiz", 6000, 700, [], "03020026040")
-=======
-    
->>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
 ]
 
 while True:
@@ -45,7 +41,6 @@ while True:
                 break
         else:
             print("Conta não encontrada.")
-            
 
     elif funcao == "3":
         titular = input("Titular da conta: ")
