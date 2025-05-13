@@ -1,4 +1,4 @@
-from models.contaBancaria import contaBancaria
+from models.contaBancaria import ContaBancaria
 import os
 
 menu = """
@@ -10,14 +10,15 @@ menu = """
 5 - Transferir
 6 - Exibir histórico de transações
 7 - Excluir conta
+8 - Fazer Pix
 =============================
 Digite a opção desejada: """
 
 # Banco
 Banco = [
-    contaBancaria("João", 3300, 500, []),
-    contaBancaria("Marco", 5000, 500, []),
-    contaBancaria("Luiz", 6000, 700, [])
+    ContaBancaria("João", 3300, 500, [], "51907070707"),
+    ContaBancaria("Marco", 5000, 500, [], "marco@gmail.com"),
+    ContaBancaria("Luiz", 6000, 700, [], "03020026040")
 ]
 
 while True:
@@ -28,7 +29,8 @@ while True:
         titular = input("Digite o nome do titular: ")
         saldo = float(input("Digite o saldo inicial: "))
         limite = float(input("Digite o limite da conta: "))
-        Banco.append(contaBancaria(titular, saldo, limite, []))
+        chave_pix = input("Digite a chave Pix da conta: ")
+        Banco.append(ContaBancaria(titular, saldo, limite, [], chave_pix))
         print("Conta criada com sucesso!")
 
     elif funcao == "2":
@@ -92,6 +94,18 @@ while True:
                 else:
                     print("A conta não pode ser excluída. Saldo precisa estar zerado.")
                 break
+        else:
+            print("Conta não encontrada.")
+
+    elif funcao == "8":
+        remetente_nome = input("Titular da conta que enviará: ")
+        chave_destino = input("Chave Pix do destinatário: ")
+        valor = float(input("Valor da transferência: "))
+
+        remetente = next((c for c in Banco if c.titular == remetente_nome), None)
+
+        if remetente:
+            remetente.pix(chave_destino, valor, Banco)
         else:
             print("Conta não encontrada.")
 
