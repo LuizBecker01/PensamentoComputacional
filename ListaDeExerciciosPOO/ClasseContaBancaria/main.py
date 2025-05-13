@@ -16,7 +16,7 @@ Digite a opção desejada: """
 
 # Banco
 Banco = [
-    ContaBancaria("João", 3300, 500, [], "51907070707"),
+    ContaBancaria("Paulo", 3300, 500, [], "51907070707"),
     ContaBancaria("Marco", 5000, 500, [], "marco@gmail.com"),
     ContaBancaria("Luiz", 6000, 700, [], "03020026040")
 ]
