@@ -3,24 +3,35 @@ import time
 class ContaBancaria:
     '''
     Classe que implementa métodos para manipular uma conta bancária.add()
-    Atributos: titular (str), saldo(float), limite (float) e histórico (lista de dicionários)
+    Atributos: titular (str), saldo(float), limite (float) e histórico (list).
     '''
+<<<<<<< HEAD
     def __init__(self, titular, saldo, limite, historico, chave_pix):
+=======
+    def __init__(self, titular: str, saldo: float, limite: float, chaves_pix: list, historico: list) -> None:
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
         '''
         Consultador da classe ContaBancaria
         '''
         self.__titular = titular
         self.__saldo = saldo
         self.__limite = limite
+<<<<<<< HEAD
         self.__chave_pix = chave_pix
+=======
+        self.__chaves_pix = chaves_pix
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
         self.__historico = historico
 
+        return True
+    
     def sacar(self, valor):
         '''
         Obejtivo: Metodo que realiza o saque na conta.
         Entrada: valor (float).
         Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
         '''
+<<<<<<< HEAD
         if valor <= 0:
             print("Valor inválido.")
             return False
@@ -43,6 +54,12 @@ class ContaBancaria:
                 print("Operação cancelada pelo usuário.")
                 return False
 
+=======
+        if self.__saldo >= valor:
+            self.__saldo -= valor
+            self.adiciona_historico("Saque", valor, time.time(), self.__saldo)
+            print(f"Saque de R${valor:.2f} realizado com sucesso!")
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
         else:
             print("Saldo e limite insuficientes.")
             return False
@@ -54,7 +71,11 @@ class ContaBancaria:
         Return: True, se a operação foi realizada com sucesso. False, caso contrário a operação não foi realizada.
         '''
         self.__saldo += valor
+<<<<<<< HEAD
         self.__adiciona_historico("Depósito", valor, time.time(), self.__saldo)
+=======
+        self.adiciona_historico("Depósito", valor, time.time(), self.__saldo)
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
         print(f"Depósito de R${valor:.2f} realizado com sucesso!")
 
     def pix(self, chave_pix_destino, valor, contas):
@@ -99,12 +120,26 @@ class ContaBancaria:
     def transferir(self, valor, destino):
         '''
         Objetivo: Metodo que realiza uma transação.
+<<<<<<< HEAD
         Entrada: valor (float), destino (obj ContaBancaria).
         Return: Se ok -> True, Se não ok -> False.
         '''
         if valor <= 0:
             print("Valor inválido.")
             return False
+=======
+        Entrada: valor (float) e obj contaBancaria
+        Return: Se ok -> True, se não ok -> False.
+        '''
+        if self.__saldo >= valor:
+            self.__saldo -= valor
+            destino.__saldo += valor
+            self.adiciona_historico("Transferência Enviada", valor, time.time(), self.saldo, destino.__titular)
+            destino.adiciona_historico("Transferência Recebida", valor, time.time(), destino.__saldo, self.__titular)
+            print(f"Transferência de R${valor:.2f} para {destino.__titular} realizada com sucesso!")
+        else:
+            print("Saldo insuficiente para transferir.")
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
 
         if valor <= self.__saldo:
             self.__saldo -= valor
@@ -136,13 +171,18 @@ class ContaBancaria:
         self.__historico.append(f"{data_hora} - {descricao} | Saldo após operação: R${saldo_pos:.2f}")
 
     def exibir_historico(self):
+<<<<<<< HEAD
         print(f"\nHistórico de {self.__titular}:")
+=======
+        print(f"\nHistórico de {self.titular}:")
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
         if self.__historico:
             for linha in self.__historico:
                 print(linha)
         else:
             print("Nenhuma transação realizada.")
 
+<<<<<<< HEAD
     @property
     def titular(self):
         return self.__titular
@@ -161,3 +201,5 @@ class ContaBancaria:
     @property
     def historico(self):
         return self.__historico
+=======
+>>>>>>> c168c2817d9156bc50b9b2b9068cd68657a074da
