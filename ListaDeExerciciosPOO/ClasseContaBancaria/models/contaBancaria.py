@@ -3,15 +3,16 @@ import time
 class contaBancaria:
     '''
     Classe que implementa métodos para manipular uma conta bancária.add()
-    Atributos: titular (str), saldo(float), limite (float) e histórico (list)
+    Atributos: titular (str), saldo(float), limite (float) e histórico (list).
     '''
-    def __init__(self, titular: str, saldo: float, limite: float, historico: list) -> bool:
+    def __init__(self, titular: str, saldo: float, limite: float, chaves_pix: list, historico: list) -> None:
         '''
         Consultador da classe ContaBancaria
         '''
         self.__titular = titular
         self.__saldo = saldo
         self.__limite = limite
+        self.__chaves_pix = chaves_pix
         self.__historico = historico
 
         return True

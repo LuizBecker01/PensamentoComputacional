@@ -15,9 +15,9 @@ Digite a opção desejada: """
 
 # Banco
 Banco = [
-    contaBancaria("João", 3300, 500, []),
-    contaBancaria("Marco", 5000, 500, []),
-    contaBancaria("Luiz", 6000, 700, [])
+    contaBancaria("João", 3300, 500, ["51980106042, "],[]),
+    contaBancaria("Marco", 5000, 500, ["51980106041, "],[]),
+    contaBancaria("Luiz", 6000, 700, ["51980106040, "],[])
 ]
 
 while True:
