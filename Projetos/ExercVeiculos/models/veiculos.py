@@ -10,6 +10,7 @@ class veiculos:
         self.longetude = longetude
         
     def acelerar(self):
+        
         self.velocidade += 10
         nova_latitude = self.latitude + 1
         self.alterarLatitude(nova_latitude)
