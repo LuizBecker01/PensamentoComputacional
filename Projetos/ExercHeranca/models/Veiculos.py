@@ -26,22 +26,9 @@ class Veiculos:
         """Retorna a placa do veiculo"""
         return self.__placa
     
-    # def getModelo(self):
-    #     """Retorna o modelo do veiculo"""
-    #     return self.__modelo
+    def setValor_fipe(self, valor: float) -> None:
+        """Altera o valor fipe do veiculo"""
+        self.__valor_fipe = valor
+        return self.__valor_fipe
     
-    # def getMarca(self):
-    #     """Retorna a marca do veiculo"""
-    #     return self.__marca
     
-    # def getAno(self):
-    #     """Retorna o ano do veiculo"""
-    #     return self.__ano
-    
-    # def getCor(self):
-    #     """Retorna a cor do veiculo"""
-    #     return self.__cor
-    
-    # def getValor_fipe(self):
-    #     """Retorna o valor fipe do veiculo"""
-    #     return self.__valor_fipe
