@@ -3,7 +3,7 @@ class Veiculos:
     Classe com as principais funcionalidades do sistema de veiculos, como placas, veiculos, etc.
     """
 
-    def __init__( self, placa: str, modelo: str, marca: str, ano: int, cor: str, valor_fipe: float) -> None:
+    def __init__( self, placa: str, modelo: str, marca: str, ano: int, cor: str, valor_fipe: float, consumo_km_por_litro: float) -> None:
         """Construtor da classe Veiculo"""
         self.__placa = placa
         self.__modelo = modelo
@@ -11,6 +11,7 @@ class Veiculos:
         self.__ano = ano
         self.__cor = cor
         self.__valor_fipe = valor_fipe
+        self.consumo_km_por_litro = consumo_km_por_litro
 
     def __str__(self) -> str:
         """Retorna uma string com as informações do veiculo"""
@@ -20,17 +21,20 @@ class Veiculos:
         infos += f"Ano: {self.__ano}\n"
         infos += f"Cor: {self.__cor}\n"
         infos += f"Valor Fipe: {self.__valor_fipe}\n"
+        infos += f"Consumo: {self.consumo_km_por_litro} km/l\n"
         return infos
-
+    
     def getPlaca(self) -> str:
         """Retorna a placa do veiculo"""
         return self.__placa
 
     def setValorFipe(self, valor: float) -> None:
         """Método que altera o valor da Fipe do Veículo
-
         Argumento: valor (float): novo valor da Fipe
         Saída: True se ok
         """
         self.__valor_fipe = valor
         return True
+
+    def calcular_consumo(self, distancia: float) -> float:
+        return distancia / self.consumo_km_por_litro

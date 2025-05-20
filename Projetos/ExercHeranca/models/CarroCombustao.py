@@ -1,6 +1,5 @@
 from .Veiculos import Veiculos
 
-
 class CarroCombustao(Veiculos):
     """
     Classe que representa um carro de combustão, herda de Veiculos

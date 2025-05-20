@@ -54,13 +54,13 @@ fusca_eletrico = CarroConvEletrico(placa="IAA0D36",
 
 # Exibindo as informações dos veículos
 print("Informações dos veículos: ")
-print("\n\n######## Veículo: #########")
+print("\n######## Veículo: #########")
 print(voyage)
-print("\n\n######## Carro a combustão: #########")
+print("\n######## Carro a combustão: #########")
 print(jetta_gli)
-print("\n\n######## Carro elétrico: #########")
+print("\n######## Carro elétrico: #########")
 print(tesla_model_s)
-print("\n\n######## Carro convertido em elétrico: #########")
+print("\n######## Carro convertido em elétrico: #########")
 print(fusca_eletrico)
 # Abastecendo o carro a combustão
 jetta_gli.abastecer(10)
@@ -68,5 +68,5 @@ print(jetta_gli)
 # Abastecendo o carro convertido em elétrico
 fusca_eletrico.abastecer(10)
 # Exibindo as informações do carro convertido em elétrico
-print("\n\n######## Carro conv. elétrico após abastecimento: #########")
+print("\n######## Carro conv. elétrico após abastecimento: #########")
 print(fusca_eletrico)
