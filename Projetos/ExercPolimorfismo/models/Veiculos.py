@@ -11,7 +11,7 @@ class Veiculos:
         self.__ano = ano
         self.__cor = cor
         self.__valor_fipe = valor_fipe
-        self.consumo = consumo
+        self.__consumo = consumo
 
     def __str__(self) -> str:
         """Retorna uma string com as informações do veiculo"""
@@ -21,7 +21,7 @@ class Veiculos:
         infos += f"Ano: {self.__ano}\n"
         infos += f"Cor: {self.__cor}\n"
         infos += f"Valor Fipe: {self.__valor_fipe}\n"
-        infos += f"Consumo: {self.consumo} km/l\n"
+        infos += f"Consumo: {self.__consumo} km/l\n"
         return infos
     
     def getPlaca(self) -> str:
