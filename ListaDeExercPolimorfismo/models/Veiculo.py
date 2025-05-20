@@ -14,6 +14,20 @@ class Veiculo:
         self.__valor_fipe = valor_fipe
         self._consumo = 10  # valor padrão para ser sobrescrito nas subclasses
 
+    @property
+    def placa(self):
+        return self.__placa
+
+    @placa.setter
+    def placa(self, nova_placa):
+        if re.match(r"^[A-Z]{3}[0-9]{4}$", nova_placa.upper()):
+            self.__placa = nova_placa.upper()
+        else:
+            raise ValueError("Placa inválida. Use o formato ABC1234.")
+
+    def get_placa(self):
+        return self.__placa
+
     def __str__(self) -> str:
         """Retorna uma string com as informações do veiculo"""
         infos = f"Placa: {self.__placa}\n"
@@ -26,3 +40,9 @@ class Veiculo:
 
     def calcular_consumo(self, distancia: float) -> float:
         return distancia / self._consumo
+    
+    def __eq__(self, other):
+        if isinstance(other, Veiculo):
+            return self.placa == other.placa
+        return False
+    
