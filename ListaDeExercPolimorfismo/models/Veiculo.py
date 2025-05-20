@@ -1,5 +1,4 @@
 import re
-
 class Veiculo:
     """
     Classe com as principais funcionalidades do sistema de veiculos, como placas, veiculos, etc.

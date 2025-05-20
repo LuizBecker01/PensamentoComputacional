@@ -31,7 +31,7 @@ frota.mostrar_veiculos()
 distancia = 240
 print(f"\n== Consumo estimado para {distancia} km ==")
 
-for veiculo in frota._veiculos:  # Acesso direto por simplicidade; em produção, prefira método getter
+for veiculo in frota._veiculos:  
     consumo = veiculo.calcular_consumo(distancia)
     unidade = "kWh" if isinstance(veiculo, VeiculoEletrico) else "L"
     print(f"- {veiculo.get_placa()}: {consumo:.2f} {unidade}")
@@ -42,7 +42,7 @@ print(f"\n== Consumo total da frota para {distancia} km ==")
 print(f"- Combustível: {litros:.2f} litros")
 print(f"- Elétrico: {kwh:.2f} kWh")
 
-# Verificação de veículos duplicados (Exercício 5)
+# Verificação de veículos duplicados
 print("\n== Verificação de duplicidade ==")
 duplicado = Carro("ABC1C57", "Outro Carro", "Outra Marca", 2022, "Azul", 50000)
 
