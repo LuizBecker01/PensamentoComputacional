@@ -1,3 +1,5 @@
+from models.VeiculoEletrico import VeiculoEletrico
+
 class Frota:
     def __init__(self):
         self._veiculos = []
@@ -6,11 +8,19 @@ class Frota:
         self._veiculos.append(veiculo)
 
     def mostrar_veiculos(self):
+        print("\nVeículos na frota:")
         for veiculo in self._veiculos:
-            print(veiculo)
+            print(f"- {veiculo._Veiculo__modelo}")
 
-    def calcular_consumo_total(self, distancia):
-        consumo_total = 0
+    def calcular_consumo_total(self, distancia: float) -> float:
+        total_litros = 0  # Inicializando o consumo em litros
+        total_kwh = 0  # Inicializando o consumo em kWh
+
         for veiculo in self._veiculos:
-            consumo_total += veiculo.calcular_consumo(distancia)
-        return consumo_total
+            consumo = veiculo.calcular_consumo(distancia)
+            if isinstance(veiculo, VeiculoEletrico):
+                total_kwh += consumo
+            else:
+                total_litros += consumo
+
+        return total_litros, total_kwh
