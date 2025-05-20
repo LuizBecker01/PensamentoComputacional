@@ -1,8 +1,7 @@
-class Veiculos:
+class Veiculo:
     """
     Classe com as principais funcionalidades do sistema de veiculos, como placas, veiculos, etc.
     """
-
     def __init__( self, placa: str, modelo: str, marca: str, ano: int, cor: str, valor_fipe: float) -> None:
         """Construtor da classe Veiculo"""
         self.__placa = placa
@@ -11,6 +10,7 @@ class Veiculos:
         self.__ano = ano
         self.__cor = cor
         self.__valor_fipe = valor_fipe
+        self._consumo = 10  # valor padrão para ser sobrescrito nas subclasses
 
     def __str__(self) -> str:
         """Retorna uma string com as informações do veiculo"""
@@ -19,7 +19,7 @@ class Veiculos:
         infos += f"Marca: {self.__marca}\n"
         infos += f"Ano: {self.__ano}\n"
         infos += f"Cor: {self.__cor}\n"
-        infos += f"Valor Fipe: {self.__valor_fipe}\n"
+        infos += f"Valor Fipe: {self.__valor_fipe:.2f}\n"
         return infos
     
     def getPlaca(self) -> str:
@@ -33,6 +33,6 @@ class Veiculos:
         """
         self.__valor_fipe = valor
         return True
-
+    
     def calcular_consumo(self, distancia: float) -> float:
-        raise NotImplementedError("Subclasse deve implementar este método.")
+        return distancia / self._consumo
