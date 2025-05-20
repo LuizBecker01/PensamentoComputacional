@@ -36,7 +36,7 @@ frota.mostrar_veiculos()
 
 # Calculando consumo por veiculo
 distancia = 240
-print(f"Consumo UP TSI, estimado para {distancia} km: {uptsi.calcular_consumo(distancia):.2f} L")
+print(f"\nConsumo UP TSI, estimado para {distancia} km: {uptsi.calcular_consumo(distancia):.2f} L")
 print(f"Consumo da Tornado, estimado para {distancia} km: {tornado.calcular_consumo(distancia):.2f} L")
 print(f"Consumo do R 560, estimado para {distancia} km: {R560.calcular_consumo(distancia):.2f} L")
 print(f"Consumo do Dolphin, estimado para {distancia} km: {Dolphin.calcular_consumo(distancia):.2f} kWh")
