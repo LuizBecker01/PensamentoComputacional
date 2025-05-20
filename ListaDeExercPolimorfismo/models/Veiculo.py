@@ -21,18 +21,6 @@ class Veiculo:
         infos += f"Cor: {self.__cor}\n"
         infos += f"Valor Fipe: {self.__valor_fipe:.2f}\n"
         return infos
-    
-    def getPlaca(self) -> str:
-        """Retorna a placa do veiculo"""
-        return self.__placa
 
-    def setValorFipe(self, valor: float) -> None:
-        """Método que altera o valor da Fipe do Veículo
-        Argumento: valor (float): novo valor da Fipe
-        Saída: True se ok
-        """
-        self.__valor_fipe = valor
-        return True
-    
     def calcular_consumo(self, distancia: float) -> float:
         return distancia / self._consumo
