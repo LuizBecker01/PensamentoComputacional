@@ -18,7 +18,5 @@ class Carro(Veiculos):
         Argumento: distancia (float): distância percorrida em km
         Saída: consumo (float): litros de combustível consumidos
         """
-        if hasattr(self, 'consumo_km_por_litro') and self.consumo_km_por_litro > 0:
-            return distancia / self.consumo_km_por_litro
-        else:
-            raise ValueError("O valor de 'consumo_km_por_litro' não está definido corretamente.")
+        consumo = distancia / 12  # Supondo que o carro consome 12 km/l
+        return consumo
