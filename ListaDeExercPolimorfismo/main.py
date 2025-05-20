@@ -12,10 +12,10 @@ os.system('cls' if os.name == 'nt' else 'clear')
 frota = Frota()
 
 # Instanciando veículos
-uptsi = Carro("ABC1C57", "UP! TSI", "Volkswagen", 2021, "Branco", 66925)
+uptsi = Carro("ABC1C57", "UP TSI", "Volkswagen", 2021, "Branco", 66925)
 tornado = Moto("BBC2A09", "XR 300L Tornado", "Honda", 2025, "Vermelho", 27690)
 R560 = Caminhao("CJC6B26", "R 560", "Scania", 2023, "Prata", 947858)
-Dolphin = VeiculoEletrico("BYD8H89", "Dolphin Mini", "Build Your Dream", 2024, "Verde limão", 102851)
+Dolphin = VeiculoEletrico("BYD8H89", "Dolphin Mini", "Build Your Dreams", 2024, "Verde limão", 102851)
 
 # Adicionando veículos à frota
 frota.adicionar_veiculo(uptsi)
@@ -24,7 +24,7 @@ frota.adicionar_veiculo(R560)
 frota.adicionar_veiculo(Dolphin)
 
 # Exibindo todos os veículos da frota
-print("== Veículos na frota ==")
+print("==Veículos na frota==")
 frota.mostrar_veiculos()
 
 # Distância a ser usada no cálculo
@@ -42,9 +42,11 @@ print(f"\n== Consumo total da frota para {distancia} km ==")
 print(f"- Combustível: {litros:.2f} litros")
 print(f"- Elétrico: {kwh:.2f} kWh")
 
+# Verificação de alteração de placa
+
 # Verificação de veículos duplicados
 print("\n== Verificação de duplicidade ==")
-duplicado = Carro("ABC1C57", "Outro Carro", "Outra Marca", 2022, "Azul", 50000)
+duplicado = Carro("ABC1C57", "Opala Diplomata", "Chevrolet", 1980, "Gold", 21500)
 
 if uptsi == duplicado:
     print(f"Veículo com placa {duplicado.placa} é considerado duplicado do UP TSI.")
