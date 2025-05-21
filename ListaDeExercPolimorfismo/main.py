@@ -13,6 +13,7 @@ frota = Frota()
 
 # Instanciando veículos
 uptsi = Carro("ABC1C57", "UP TSI", "Volkswagen", 2021, "Branco", 66925)
+golf = Carro("ABC1C57", "Golf", "Volkswagen", 2022, "Preto", 102000)
 tornado = Moto("BBC2A09", "XR 300L Tornado", "Honda", 2025, "Vermelho", 27690)
 R560 = Caminhao("CJC6B26", "R 560", "Scania", 2023, "Prata", 947858)
 Dolphin = VeiculoEletrico("BYD8H89", "Dolphin Mini", "Build Your Dreams", 2024, "Verde limão", 102851)
@@ -42,15 +43,8 @@ print(f"\n== Consumo total da frota para {distancia} km ==")
 print(f"- Combustível: {litros:.2f} litros")
 print(f"- Elétrico: {kwh:.2f} kWh")
 
-# Verificação de alteração de placa
-
 # Verificação de veículos duplicados
 print("\n== Verificação de duplicidade ==")
-duplicado = Carro("ABC1C57", "Opala Diplomata", "Chevrolet", 1980, "Gold", 21500)
-
-if uptsi == duplicado:
-    print(f"Veículo com placa {duplicado.placa} é considerado duplicado do UP TSI.")
-else:
-    print("Veículos diferentes.")
+print(uptsi == tornado)
 
 input("\nPressione enter para encerrar...")

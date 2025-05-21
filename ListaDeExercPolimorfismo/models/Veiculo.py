@@ -42,6 +42,6 @@ class Veiculo:
     
     def __eq__(self, other):
         if isinstance(other, Veiculo):
-            return self.placa == other.placa
+            return self.__placa == other.get_placa()
         return False
     
