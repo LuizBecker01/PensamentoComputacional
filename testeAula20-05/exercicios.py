@@ -1,11 +1,11 @@
 def div(a, b):
     if b == 0:
-        raise ValueError("Divisão por zero não é permitida.")
+        return ValueError("Divisão por zero não é permitida.")
     return a / b
 
 while True:
     try:
-        n1 = float(input("Digite o primeiro número ou somente enter para sair: "))
+        n1 = input("Digite o primeiro número (ou somente 'SAIR' para sair): ")
         if n1.upper() == "SAIR":
             break
         n1 = float(n1)
