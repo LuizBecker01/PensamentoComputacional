@@ -30,8 +30,14 @@ frota.mostrar_veiculos()
 # Distância a ser usada no cálculo
 print(f"\n== Consumo estimado para km ==")
 
-distancia = 240
-
+# Resolução provisória
+try:
+    if distancia < 0:
+        raise DistanciaNegativa("A distância deve ser maior que zero.")
+except ValueError as erro:
+    print(f"Erro: {erro}. Por favor, digite um número válido.")
+except DistanciaNegativa as erro:
+    print(f"Erro: {erro}.")
 for veiculo in frota._veiculos:  
     consumo = veiculo.calcular_consumo(distancia)
     unidade = "kWh" if isinstance(veiculo, VeiculoEletrico) else "L"
@@ -39,6 +45,7 @@ for veiculo in frota._veiculos:
 
 # Consumo total da frota
 litros, kwh = frota.calcular_consumo_total(distancia)
+
 print(f"\n== Consumo total da frota para {distancia} km ==")
 print(f"- Combustível: {litros:.2f} litros")
 print(f"- Elétrico: {kwh:.2f} kWh")
