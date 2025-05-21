@@ -24,7 +24,7 @@ frota.adicionar_veiculo(R560)
 frota.adicionar_veiculo(Dolphin)
 
 # Exibindo todos os veículos da frota
-print("==Veículos na frota==")
+print("== Frota ==")
 frota.mostrar_veiculos()
 
 # Distância a ser usada no cálculo
