@@ -13,7 +13,6 @@ frota = Frota()
 
 # Instanciando veículos
 uptsi = Carro("ABC1C57", "UP TSI", "Volkswagen", 2021, "Branco", 66925)
-golf = Carro("ABC1C57", "Golf", "Volkswagen", 2022, "Preto", 102000)
 tornado = Moto("BBC2A09", "XR 300L Tornado", "Honda", 2025, "Vermelho", 27690)
 R560 = Caminhao("CJC6B26", "R 560", "Scania", 2023, "Prata", 947858)
 Dolphin = VeiculoEletrico("BYD8H89", "Dolphin Mini", "Build Your Dreams", 2024, "Verde limão", 102851)
@@ -45,6 +44,6 @@ print(f"- Elétrico: {kwh:.2f} kWh")
 
 # Verificação de veículos duplicados
 print("\n== Verificação de duplicidade ==")
-print(uptsi == tornado)
+print(uptsi == uptsi)
 
 input("\nPressione enter para encerrar...")

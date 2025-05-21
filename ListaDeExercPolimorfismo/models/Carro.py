@@ -7,3 +7,6 @@ class Carro(Veiculo):
 
     def __str__(self) -> str:
         return super().__str__()
+
+    def calcular_consumo(self, distancia: float) -> float:
+        return distancia / 12

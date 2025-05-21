@@ -11,7 +11,6 @@ class Veiculo:
         self.__ano = ano
         self.__cor = cor
         self.__valor_fipe = valor_fipe
-        self._consumo = 10  # valor padrão para ser sobrescrito nas subclasses
 
     @property
     def placa(self):
@@ -36,9 +35,6 @@ class Veiculo:
         infos += f"Cor: {self.__cor}\n"
         infos += f"Valor Fipe: {self.__valor_fipe:.2f}\n"
         return infos
-
-    def calcular_consumo(self, distancia: float) -> float:
-        return distancia / self._consumo
     
     def __eq__(self, other):
         if isinstance(other, Veiculo):
