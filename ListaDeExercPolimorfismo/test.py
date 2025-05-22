@@ -22,6 +22,7 @@ Dolphin = VeiculoEletrico("BYD8H89", "Dolphin Mini", "Build Your Dreams", 2024, 
 # Cadastro de veículos por placa
 print("\n== Cadastro de veículo ==")
 
+
 # Adicionando veículos à frota
 frota.adicionar_veiculo(uptsi)
 frota.adicionar_veiculo(tornado)
