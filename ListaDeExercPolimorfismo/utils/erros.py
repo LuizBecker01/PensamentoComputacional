@@ -11,4 +11,4 @@ except ValueError as erro:
 except DistanciaNegativa as erro:
     print(f"Erro: {erro}.")
 
-    
+
