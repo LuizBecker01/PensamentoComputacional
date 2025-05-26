@@ -18,7 +18,7 @@ class ConversorMoeda:
         preco_atual = produto.get_preco()
 
         if moeda_atual == moeda_destino:
-            return False  # Conversão desnecessária
+            return False  # Para caso a conversão for desnecessária
 
         chave = (moeda_atual, moeda_destino)
 

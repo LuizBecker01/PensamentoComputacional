@@ -1,3 +1,4 @@
+"""Classe base para representar um produto."""
 import os
 from models.ProdutoAlimenticio import ProdutoAlimenticio
 from models.ProdutoEletronico import ProdutoEletronico
@@ -62,7 +63,8 @@ def cadastrar_produto(produtos, conversor):
     # Adiciona o produto à lista
     produtos.append(produto)
     print("Produto cadastrado com sucesso!\n")
-
+    
+# Método para exibir os produtos cadastrados
 def ver_produtos(produtos):
     if not produtos:
         print("\nNenhum produto cadastrado ainda.\n")
