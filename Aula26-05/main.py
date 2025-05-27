@@ -1,7 +1,7 @@
 import tkinter as tk
 def clique():
     if rotulo.cget("text") == "Olá Mundo":
-        rotulo.config(text="Você clicou no botão!")
+        rotulo.config(text="Olá turma")
     else:
         rotulo.config(text="Olá Mundo")
 
