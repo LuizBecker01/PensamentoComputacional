@@ -4,7 +4,7 @@ from models.VeiculoEletrico import VeiculoEletrico
 from models.Moto import Moto
 from models.Caminhao import Caminhao
 from models.Frota import Frota
-from models.CadastroVeiculo import CadastroVeiculo
+# from models.CadastroVeiculo import CadastroVeiculo
 from utils.erros import *
 
 # Limpa a tela
